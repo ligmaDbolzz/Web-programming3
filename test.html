@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống thi trắc nghiệm trực tuyến</title>
+    <style>
+        /* CSS cho giao diện */
+        /* Đặt kiểu CSS ở đây */
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <script src="timer.js"></script> -->
+</head>
+
+<body>
+    <h1>Hệ thống thi trắc nghiệm trực tuyến</h1>
+    <div id="timer">Thời gian còn lại: <span id="time-left"></span></div>
+    <div id="question-container">
+        <!-- Hiển thị câu hỏi và lựa chọn cho mỗi câu -->
+        <!-- Ví dụ: -->
+        <div class="question">
+            <h3>Câu hỏi 1: Đâu là thủ đô của Pháp?</h3>
+            <input type="radio" name="question1" value="paris"> Paris<br>
+            <input type="radio" name="question1" value="london"> London<br>
+            <input type="radio" name="question1" value="berlin"> Berlin<br>
+            <input type="radio" name="question1" value="rome"> Rome<br>
+        </div>
+        <div class="question">
+            <h3>Câu hỏi 2: Trái Đất có bao nhiêu châu lục?</h3>
+            <input type="radio" name="question2" value="5"> 5<br>
+            <input type="radio" name="question2" value="6"> 6<br>
+            <input type="radio" name="question2" value="7"> 7<br>
+            <input type="radio" name="question2" value="8"> 8<br>
+        </div>
+        <!-- Thêm câu hỏi khác tại đây -->
+    </div>
+    <button id="submit-button" onclick="showtest()">Nộp bài</button>
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function () {
+            // Lấy câu trả lời từ các input radio hoặc các phần tử tương ứng
+            var answers = {
+                question1: document.querySelector('input[name="question1"]:checked').value,
+                question2: document.querySelector('input[name="question2"]:checked').value
+                // Thêm các câu trả lời khác tại đây
+            };
+
+            // Chuyển câu trả lời sang trang kết quả
+            var queryString = Object.keys(answers).map(key => key + '=' + answers[key]).join('&');
+            window.location.href = 'result.html?' + queryString;
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết Quả Bài Thi</title>
+  <style>
+    /* CSS cho giao diện */
+    /* Đặt kiểu CSS ở đây */
+  </style>
+</head>
+<body>
+  <div id="result-container">
+    <h2>Kết Quả Bài Thi</h2>
+    <div id="question-results">
+      <!-- Các kết quả câu hỏi sẽ được hiển thị ở đây -->
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var questionResults = document.getElementById('question-results');
+
+      // Duyệt qua các query parameters để hiển thị kết quả
+      params.forEach(function(value, key) {
+        var questionNumber = key.replace('question', ''); // Lấy số câu hỏi từ tên query parameter
+        var questionResultDiv = document.createElement('div');
+        questionResultDiv.classList.add('question-result');
+        questionResultDiv.innerHTML = '<p>Câu hỏi ' + questionNumber + ': ' + value + '</p>';
+        questionResults.appendChild(questionResultDiv);
+      });
+    });
+  </script>
+</body>
+</html>
